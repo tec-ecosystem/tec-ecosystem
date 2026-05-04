@@ -49,11 +49,11 @@ jobs:
     steps:
       # 1️⃣ Checkout repository
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # 2️⃣ Setup Node.js
       - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: "npm"
@@ -99,7 +99,7 @@ jobs:
 
       # 9️⃣ Upload Build + Ledger + Artifacts
       - name: 📦 Upload Build & Ledger Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: build-and-sovereign-output
           path: |
@@ -127,10 +127,10 @@ jobs:
     
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: 🚀 Deploy to Vercel
-        uses: amondnet/vercel-action@v25
+        uses: amondnet/vercel-action@v42
         id: vercel-deploy
         env:
           PI_API_KEY: ${{ secrets.PI_API_KEY }}

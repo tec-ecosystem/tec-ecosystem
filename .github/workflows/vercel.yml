@@ -20,10 +20,10 @@ jobs:
     
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: "npm"
@@ -47,7 +47,7 @@ jobs:
       - name: 🚀 Deploy to Vercel (Production)
         id: vercel-deploy-prod
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: amondnet/vercel-action@v25
+        uses: amondnet/vercel-action@v42
         env:
           PI_API_KEY: ${{ secrets.PI_API_KEY }}
           PI_API_SECRET: ${{ secrets.PI_API_SECRET }}
@@ -67,7 +67,7 @@ jobs:
       - name: 🔍 Deploy to Vercel (Preview)
         id: vercel-deploy-preview
         if: github.event_name == 'pull_request'
-        uses: amondnet/vercel-action@v25
+        uses: amondnet/vercel-action@v42
         env:
           PI_API_KEY: ${{ secrets.PI_API_KEY }}
           PI_API_SECRET: ${{ secrets.PI_API_SECRET }}
